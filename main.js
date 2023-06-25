@@ -5,7 +5,7 @@ function getTotalMinutes(ct) {
 	return hours * 60 + minutes;
 }
 
-function stringDate(time) {
+function stringTime(time) {
 	return time.toString().length === 1 ? `0${time}` : time;
 }
 
@@ -16,7 +16,7 @@ function changeAngle() {
 	);
 	const r = (vw - 44) / 2;
 
-	const dayPercent = 720 / 1440;
+	const dayPercent = getTotalMinutes(currentTime) / 1440;
 	const dayAngle = dayPercent * 90 + 45;
 	const radAngle = (dayAngle * Math.PI) / 180;
 
@@ -29,9 +29,9 @@ function changeAngle() {
 	document.body.style.setProperty('--coordX', right + 'px');
 	document.body.style.setProperty('--coordY', bottom + 'px');
 
-	document.querySelector('.time-container h3').innerHTML = `${stringDate(
+	document.querySelector('.time-container h3').innerHTML = `${stringTime(
 		currentTime.getHours()
-	)}:${stringDate(currentTime.getMinutes())}`;
+	)}:${stringTime(currentTime.getMinutes())}`;
 }
 
 const currentTime = new Date();
