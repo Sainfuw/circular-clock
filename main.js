@@ -16,11 +16,13 @@ function changeAngle() {
 	);
 	const r = (vw - 44) / 2;
 
-	const dayPercent = getTotalMinutes(currentTime) / 1440;
+	const dayPercent = 720 / 1440;
 	const dayAngle = dayPercent * 90 + 45;
+	const radAngle = (dayAngle * Math.PI) / 180;
 
-	const coordX = r * Math.sin((Math.PI * 2 * dayAngle) / 360);
-	const coordY = r * Math.cos((Math.PI * 2 * dayAngle) / 360);
+	const coordX = r * Math.sin(radAngle);
+	const coordY = r * Math.cos(radAngle);
+
 	const right = (coordY + r).toFixed(0);
 	const bottom = (coordX - r / 1.67).toFixed(0);
 
